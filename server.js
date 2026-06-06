@@ -1,9 +1,17 @@
 const express = require("express");
 const fs = require("fs");
+const path = require("path");
+
 const app = express();
 
 app.use(express.static("public"));
 
+// 🟢 الصفحة الرئيسية (ده اللي كان ناقص)
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
+// API جلب طالب
 app.get("/student", (req, res) => {
     const id = req.query.id;
 
@@ -18,6 +26,6 @@ app.get("/student", (req, res) => {
     res.json(student);
 });
 
-app.listen(3000, () => {
-    console.log("Server running on http://localhost:3000");
+app.listen(process.env.PORT || 3000, () => {
+    console.log("Server running");
 });
