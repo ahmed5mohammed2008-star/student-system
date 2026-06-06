@@ -4,40 +4,34 @@ const path = require("path");
 
 const app = express();
 
-// Static files (HTML/CSS/JS)
+// مهم جدًا لملفات public
 app.use(express.static(path.join(__dirname, "public")));
 
-// الصفحة الرئيسية
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "index.html"));
-});
-
-// API: جلب طالب بالـ id
+// API
 app.get("/student", (req, res) => {
-    try {
-        const id = req.query.id;
+    const id = req.query.id;
 
-        const filePath = path.join(__dirname, "students.json");
+    const data = JSON.parse(
+        fs.readFileSync(path.join(__dirname, "students.json"), "utf8")
+    );
 
-        const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    const student = data.find(s => s.id === id);
 
-        const student = data.find(s => s.id === id);
-
-        if (!student) {
-            return res.send("Student not found");
-        }
-
-        res.json(student);
-
-    } catch (err) {
-        console.log(err);
-        res.status(500).send("Server Error");
+    if (!student) {
+        return res.status(404).json({ message: "Student not found" });
     }
+
+    res.json(student);
 });
 
-// مهم جدًا لـ Railway
+// صفحة رئيسية (اختياري مهم عشان Railway ما يطلعش Cannot GET /)
+app.get("/", (req, res) => {
+    res.send("Student System is Running 🚀");
+});
+
+// 🚨 أهم سطر في Railway
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-    console.log("Server running on port " + PORT);
+    console.log(`Server running on port ${PORT}`);
 });
