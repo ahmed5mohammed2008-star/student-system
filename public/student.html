@@ -43,14 +43,13 @@ td{padding:10px;border-bottom:1px solid #ddd}
 </div>
 </div>
 
-<!-- 🔥 التعديل الوحيد (حماية الرابط زي نظام الجامعة) -->
 <script>
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 
-// لو مفيش ID → روح لصفحة تسجيل الدخول
+// تم التعديل هنا: التوجيه للمسار الرئيسي النظيف بدلاً من اسم ملف ثابت
 if(!id){
-window.location.href = "login.html";
+window.location.href = "/";
 }
 </script>
 

@@ -16,7 +16,7 @@ app.get("/student", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "student.html"));
 });
 
-// PORT - تم التعديل هنا لضمان وجود قيمة احتياطية ومنع انهيار السيرفر
+// PORT مهم جدًا ومؤمن بقيمة احتياطية
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, "0.0.0.0", () => {

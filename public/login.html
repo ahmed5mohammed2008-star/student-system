@@ -72,8 +72,8 @@ let pass = document.getElementById("pass").value;
 // مؤقتًا: نفس الـ ID = password
 if(user && pass && user === pass){
 
-// الربط الحقيقي مع صفحة الطالب
-window.location.href = "student.html?id=" + user;
+// تم التعديل هنا: استخدام المسار النظيف المتوافق مع السيرفر
+window.location.href = "/student?id=" + user;
 
 }else{
 alert("بيانات غير صحيحة");
