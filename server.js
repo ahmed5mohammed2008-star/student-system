@@ -6,16 +6,16 @@ const app = express();
 
 app.use(express.static("public"));
 
-// 🟢 الصفحة الرئيسية (ده اللي كان ناقص)
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-// API جلب طالب
 app.get("/student", (req, res) => {
     const id = req.query.id;
 
-    const data = JSON.parse(fs.readFileSync("students.json"));
+    const data = JSON.parse(
+        fs.readFileSync(path.join(__dirname, "students.json"))
+    );
 
     const student = data.find(s => s.id === id);
 
