@@ -1,37 +1,24 @@
 const express = require("express");
-const fs = require("fs");
 const path = require("path");
 
 const app = express();
 
-// مهم جدًا لملفات public
+// لازم public
 app.use(express.static(path.join(__dirname, "public")));
 
-// API
-app.get("/student", (req, res) => {
-    const id = req.query.id;
-
-    const data = JSON.parse(
-        fs.readFileSync(path.join(__dirname, "students.json"), "utf8")
-    );
-
-    const student = data.find(s => s.id === id);
-
-    if (!student) {
-        return res.status(404).json({ message: "Student not found" });
-    }
-
-    res.json(student);
-});
-
-// صفحة رئيسية (اختياري مهم عشان Railway ما يطلعش Cannot GET /)
+// صفحة رئيسية (مهم جدًا عشان Railway)
 app.get("/", (req, res) => {
-    res.send("Student System is Running 🚀");
+    res.sendFile(path.join(__dirname, "public", "login.html"));
 });
 
-// 🚨 أهم سطر في Railway
+// Student page
+app.get("/student", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "student.html"));
+});
+
+// مهم جدًا Railway
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
+    console.log("Server running on port " + PORT);
 });
