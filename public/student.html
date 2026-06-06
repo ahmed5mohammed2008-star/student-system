@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>بيانات الطالب</title>
+
+<style>
+body{font-family:Tahoma,Arial,sans-serif;background:#f3f6fb;margin:0}
+.card{max-width:700px;margin:30px auto;background:#fff;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.15);overflow:hidden}
+.header{background:#0b5cab;color:#fff;padding:18px;text-align:center}
+.content{padding:20px}
+img{display:block;margin:0 auto 20px auto;width:180px;border-radius:8px}
+table{width:100%;border-collapse:collapse}
+td{padding:10px;border-bottom:1px solid #ddd}
+.label{font-weight:bold;width:35%}
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<div class="header">
+<h2>بيانات الطالب</h2>
+</div>
+
+<div class="content">
+
+<img src="./photo_5848131945773075975_y(1).jpg" alt="صورة الطالب">
+
+<table>
+<tr><td class="label">الاسم</td><td>سعيد محمد احمد عبدالهادى ابوالعلاء</td></tr>
+<tr><td class="label">رقم الطالب</td><td>10003885989</td></tr>
+<tr><td class="label">الجامعة</td><td>جامعة المنصورة</td></tr>
+<tr><td class="label">الكلية</td><td>كلية الهندسة</td></tr>
+<tr><td class="label">القسم</td><td>القسم العام</td></tr>
+<tr><td class="label">الفرقة</td><td>إعدادي</td></tr>
+<tr><td class="label">حالة القيد</td><td>مستجد</td></tr>
+</table>
+
+</div>
+</div>
+
+<!-- 🔥 التعديل الوحيد (حماية الرابط زي نظام الجامعة) -->
+<script>
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+// لو مفيش ID → روح لصفحة تسجيل الدخول
+if(!id){
+window.location.href = "login.html";
+}
+</script>
+
+</body>
+</html>

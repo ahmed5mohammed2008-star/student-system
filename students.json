@@ -1,0 +1,14 @@
+[
+  {
+    "id": "12345",
+    "name": "Ahmed Ali",
+    "faculty": "Engineering",
+    "level": "3rd Year"
+  },
+  {
+    "id": "67890",
+    "name": "Sara Mohamed",
+    "faculty": "Computer Science",
+    "level": "2nd Year"
+  }
+]

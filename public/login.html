@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>تسجيل الدخول</title>
+
+<style>
+body{
+margin:0;
+font-family:Tahoma;
+background:#0b5cab;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.box{
+background:white;
+padding:30px;
+border-radius:12px;
+width:320px;
+box-shadow:0 5px 20px rgba(0,0,0,0.3);
+text-align:center;
+}
+
+h2{
+color:#0b5cab;
+margin-bottom:20px;
+}
+
+input{
+width:100%;
+padding:10px;
+margin:10px 0;
+border:1px solid #ccc;
+border-radius:6px;
+}
+
+button{
+width:100%;
+padding:10px;
+background:#0b5cab;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+button:hover{
+background:#094a8f;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+<h2>تسجيل الدخول</h2>
+
+<input type="text" id="user" placeholder="اسم المستخدم (ID)">
+<input type="password" id="pass" placeholder="كلمة المرور">
+
+<button onclick="login()">دخول</button>
+</div>
+
+<script>
+function login(){
+let user = document.getElementById("user").value;
+let pass = document.getElementById("pass").value;
+
+// مؤقتًا: نفس الـ ID = password
+if(user && pass && user === pass){
+
+// الربط الحقيقي مع صفحة الطالب
+window.location.href = "student.html?id=" + user;
+
+}else{
+alert("بيانات غير صحيحة");
+}
+}
+</script>
+
+</body>
+</html>
